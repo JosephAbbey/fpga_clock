@@ -41,7 +41,7 @@ Then load Modelsim:
   `autostep`.
 - Time will begin to advance. At any time you can disable autostep
   and step through manually using the `step` button.
-- To reload the tickle or the vhdl, press `restart`.
+- To reload the simulation, press `restart`.
 - When autostep is disabled you can click `goto cursor` to view what
   the display looks like where your cursor is in the waveform.
 
