@@ -178,8 +178,12 @@ proc display {can {s0 "0000000"} {s1 "0000000"} {s2 "0000000"} {s3 "0000000"} {a
 }
 
 proc setup_monitor {} {
-  global clock alarm am pm cwait
-  when -label updateTime "${clock}='1'" {
+  global clock disp alarm am pm cwait
+  catch {nowhen updateTime}
+  when -label updateTime "${disp}'event or ${alarm}'event or ${am}'event or ${pm}'event" {
+    # Don't let the sim run away, we won't see the display update
+    stop
+
     set disp_v [lindex [examine -radix bin $disp] 0]
     display .sevseg.time \
       [lindex $disp_v 0] \
@@ -189,8 +193,6 @@ proc setup_monitor {} {
       [examine $alarm]   \
       [examine $am]      \
       [examine $pm]
-    # Don't let the sim run away, we won't see the display update
-    stop
   }
 }
 
@@ -222,7 +224,7 @@ set winwidth    [expr  $canwidth + $fontsize*28]
 set winheight   [expr  $canheight + $fontsize*3]
 set btnfontsize [expr $fontsize/2]
 set itoggletime [string trim [examine /test_time_display/ClkPeriod] " ps{}"]
-set toggletime  "[expr $itoggletime*3] ps"
+set toggletime  "[expr $itoggletime*2] ps"
 # set toggletime [examine /test_time_display/ClkPeriod]
 # Signals
 set clock   {/test_time_display/Clk}

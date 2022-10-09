@@ -289,6 +289,10 @@ begin
         flash <= not flash;
       else
         ticks <= ticks+1;
+        disp(3) <= disp_i(3);
+        disp(2) <= disp_i(2);
+        disp(1) <= disp_i(1);
+        disp(0) <= disp_i(0);
       end if;
     end if;
   end process;
@@ -453,6 +457,10 @@ begin
             am    <= '0';
             pm    <= '0';
             if timer_set = U then
+              if silence then
+                timer_ialarm <= '0';
+                timer_set <= D0;
+              end if;
               if PPS then
                 if  timer_idigit(3) = 0 and
                     timer_idigit(2) = 0 and

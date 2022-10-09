@@ -35,7 +35,6 @@ architecture rtl of test_time_display is
 
   signal Clk              : std_logic;
   constant ClkPeriod      : time                                    := 250 ms; -- 10 ns;
-  constant ClkFrequencyHz : integer                                 := 1000 ms / ClkPeriod; -- 10 Hz
   signal PPS              : std_logic;
 
   function To_Std_Logic(L: boolean) return std_ulogic is
@@ -53,9 +52,9 @@ begin
   begin
     Clk <= '1';
     PPS <= To_Std_Logic((now mod 1 sec) = 0 ps);
-    wait for ClkPeriod;
+    wait for ClkPeriod / 2;
     Clk <= '0';
-    wait for ClkPeriod;
+    wait for ClkPeriod / 2;
   end process;
 
   comp_time_display : entity work.time_display

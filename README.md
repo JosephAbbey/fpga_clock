@@ -1,6 +1,7 @@
 # Clock
 
-This is my implementation of a clock in vhdl for the TCL interface I co-authored with my Dad (@philipabbey).
+This is my implementation of a clock in vhdl; intended for the TCL interface
+I co-authored with my Dad ([@philipabbey](https://github.com/philipabbey)).
 [ℹ️](https://blog.abbey1.org.uk/index.php/technology/tcl-tk-graphical-display-driven-by-a-vhdl)
 
 Around 15 hours 35 mins to write the code and make a write up.
