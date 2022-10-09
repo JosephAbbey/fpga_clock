@@ -49,3 +49,5 @@ Then load Modelsim:
 - You can enable and disable 24 hour mode with the checkbox.
 - You can switch modes using the radio buttons.
 - You can interact with the silence, up, down and ok buttons.
+
+![TCL/TK Graphical Display driven by VHDL in ModelSim](./media/time_display.png?raw=true "TCL/TK Graphical Display")
